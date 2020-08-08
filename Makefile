@@ -51,3 +51,8 @@ code-tests: phpunit.xml
 code-tests:
 	@docker exec -it application mkdir -p .build/phpunit
 	@docker exec -it application vendor/bin/phpunit --configuration=phpunit.xml
+
+.PHONY: mutation-tests
+mutation-tests:  ## Runs mutation tests with infection/infection
+	@docker exec -it application mkdir -p .build/infection
+	@docker exec -it application vendor/bin/infection --configuration=infection.json.dist

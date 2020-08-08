@@ -17,6 +17,7 @@
     "ergebnis/composer-normalize": "^2.6",
     "ergebnis/php-cs-fixer-config": "^2.2",
     "friendsofphp/php-cs-fixer": "^2.16",
+    "infection/infection": "^0.16.4",
     "phpunit/phpunit": "^9.3"
   },
   "config": {
