@@ -3,7 +3,7 @@ help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: it
-it: coding-standards ## Runs the coding-standards
+it: coding-standards code-tests ## Runs the coding-standards, code-tests
 
 .PHONY: application-start
 application-start: ## Start docker containers
@@ -45,3 +45,9 @@ coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-norm
 	@docker exec -it application composer normalize
 	@docker exec -it application mkdir -p .build/php-cs-fixer
 	@docker exec -it application vendor/bin/php-cs-fixer fix --config=.php_cs.dist --diff --diff-format=udiff --verbose
+
+.PHONY: code-tests
+code-tests: phpunit.xml
+code-tests:
+	@docker exec -it application mkdir -p .build/phpunit
+	@docker exec -it application vendor/bin/phpunit --configuration=phpunit.xml

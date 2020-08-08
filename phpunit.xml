@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/schema/9.3.xsd"
+
+        bootstrap="./vendor/autoload.php"
+        cacheResult="true"
+        cacheResultFile=".build/phpunit/.phpunit.result.cache"
+
+        beStrictAboutChangesToGlobalState="true"
+        beStrictAboutCoversAnnotation="true"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutResourceUsageDuringSmallTests="true"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutTodoAnnotatedTests="true"
+
+        colors="true"
+        verbose="true"
+        columns="max"
+
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+
+        executionOrder="random"
+
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>./test/Unit/</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <server name="APP_ENV" value="Test"/>
+    </php>
+
+</phpunit>
