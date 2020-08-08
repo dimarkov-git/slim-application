@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  # Application
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dimarkov/slim-application
+    container_name: slim-application
+    restart: unless-stopped
+    tty: true
+    working_dir: /application
+    volumes:
+      - ${APPLICATION_PATH}:/application:delegated
+
+  # Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${APPLICATION_PATH}:/application:delegated
+      - ${DOCKER_PATH}/config/docker/nginx/conf.d/:/etc/nginx/conf.d/:delegated
+      - ${DOCKER_PATH}/runtime/logs/nginx/:/var/log/nginx/:delegated

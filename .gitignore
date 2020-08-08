@@ -9,3 +9,6 @@
 
 # libraries
 /vendor
+
+# env
+.env
