@@ -1,0 +1,41 @@
+{
+  "name": "dimarkov/slim-application",
+  "type": "project",
+  "description": "Provides a GitHub repository template for a PHP library based on slim framework.",
+  "homepage": "https://github.com/dimarkov-git/slim-application",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Denis Markov",
+      "email": "dimarkov@outlook.com"
+    }
+  ],
+  "require": {
+    "php": "7.4.9"
+  },
+  "require-dev": {},
+  "config": {
+    "apcu-autoloader": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.4.9"
+    },
+    "preferred-install": "dist",
+    "process-timeout": 0,
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "DImarkov\\Application\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DImarkov\\Application\\Test\\": "test/"
+    }
+  },
+  "support": {
+    "issues": "https://github.com/dimarkov-git/slim-application/issues",
+    "source": "https://github.com/dimarkov-git/slim-application"
+  }
+}

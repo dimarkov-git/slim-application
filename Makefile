@@ -17,3 +17,18 @@ docker-up: ## Start docker containers
 docker-down: ## Stop docker containers
 	@echo "+ $@"
 	@docker-compose down
+
+.PHONY: docker-vendor
+docker-vendor: composer.json ## Install vendor with composer inside application's docker container
+	@docker exec -it application composer validate --strict
+	@docker exec -it application composer install --no-interaction --no-progress --no-suggest
+
+.PHONY: vendor
+vendor: composer.json ## Install vendor with composer locally
+	composer validate --strict
+	composer install --no-interaction --no-progress --no-suggest
+
+.PHONY: docker-image-vendor
+docker-image-vendor: composer.json ## Install vendor with docker composer image
+	docker run --rm -v $(PWD):/app composer validate --strict
+	docker run --rm -v $(PWD):/app composer install --no-interaction --no-progress --no-suggest
