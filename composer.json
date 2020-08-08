@@ -11,9 +11,11 @@
     }
   ],
   "require": {
-    "php": "7.4.9"
+    "php": "^7.4.9"
   },
-  "require-dev": {},
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.6"
+  },
   "config": {
     "apcu-autoloader": true,
     "optimize-autoloader": true,

@@ -36,3 +36,7 @@ docker-image-vendor: composer.json ## Install vendor with docker composer image
 	@docker run --rm -v $(PWD):/app composer validate --strict
 	@docker run --rm -v $(PWD):/app composer install --no-interaction --no-progress --no-suggest
 
+.PHONY: coding-standards
+coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize
+	@echo "+ $@"
+	@docker exec -it application composer normalize
