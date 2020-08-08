@@ -2,13 +2,16 @@
 .DS_Store
 
 # IDE
-/.idea
+/.idea/
 
 # git
 .gitconfig
 
 # libraries
-/vendor
+/vendor/
 
 # env
 .env
+
+# cache
+/.build/

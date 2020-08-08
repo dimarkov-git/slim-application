@@ -2,6 +2,9 @@
 help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: it
+it: coding-standards ## Runs the coding-standards
+
 .PHONY: application-start
 application-start: ## Start docker containers
 	@echo "+ $@"
@@ -16,7 +19,7 @@ application-stop: ## Stop docker containers
 application-clean: application-stop ## Clean docker runtime folders
 application-clean:
 	@echo "+ $@"
-	@rm -rf ./runtime/logs/nginx/
+	@rm -rf ./.runtime/logs/
 
 .PHONY: vendor
 vendor: composer.json ## Install vendor with composer inside application's docker container
@@ -40,3 +43,5 @@ docker-image-vendor: composer.json ## Install vendor with docker composer image
 coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize
 	@echo "+ $@"
 	@docker exec -it application composer normalize
+	@docker exec -it application mkdir -p .build/php-cs-fixer
+	@docker exec -it application vendor/bin/php-cs-fixer fix --config=.php_cs.dist --diff --diff-format=udiff --verbose

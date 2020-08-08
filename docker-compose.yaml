@@ -27,4 +27,4 @@ services:
     volumes:
       - ${APPLICATION_PATH}:/application:delegated
       - ${DOCKER_PATH}/config/docker/nginx/conf.d/:/etc/nginx/conf.d/:delegated
-      - ${DOCKER_PATH}/runtime/logs/nginx/:/var/log/nginx/:delegated
+      - ${DOCKER_PATH}/.runtime/logs/nginx/:/var/log/nginx/:delegated
