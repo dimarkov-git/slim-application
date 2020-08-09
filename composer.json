@@ -12,7 +12,8 @@
   ],
   "require": {
     "php": "^7.4.9",
-    "myclabs/php-enum": "^1.7"
+    "myclabs/php-enum": "^1.7",
+    "vlucas/phpdotenv": "^5.1"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.6",
