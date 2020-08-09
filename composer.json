@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "php": "^7.4.9"
+    "php": "^7.4.9",
+    "myclabs/php-enum": "^1.7"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.6",
@@ -24,7 +25,8 @@
     "phpstan/phpstan-deprecation-rules": "^0.12.5",
     "phpstan/phpstan-phpunit": "^0.12.16",
     "phpstan/phpstan-strict-rules": "^0.12.4",
-    "phpunit/phpunit": "^9.3"
+    "phpunit/phpunit": "^9.3",
+    "timeweb/phpstan-enum": "^2.2"
   },
   "config": {
     "apcu-autoloader": true,
