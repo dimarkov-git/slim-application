@@ -15,17 +15,17 @@ use MyCLabs\Enum\Enum;
  * @method static self APPLICATION_PATH()
  * @method static self APP_ENV()
  */
-class EnvironmentVariableEnum extends Enum
+final class EnvironmentVariableEnum extends Enum
 {
     // docker
     private const DOCKER_PATH = 'DOCKER_PATH';
     private const APPLICATION_PATH = 'APPLICATION_PATH';
 
     // application
-    private const APP_ENV = 'APP_DISPLAY_ERRORS';
+    private const APP_ENV = 'APP_ENV';
 
-    public function getValue(): string
+    public function __construct(string $value)
     {
-        return (string) parent::getValue();
+        parent::__construct($value);
     }
 }

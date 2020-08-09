@@ -2,4 +2,49 @@
 
 declare(strict_types=1);
 
-return require_once __DIR__ . '/.php_cs.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+use DImarkov\Application\Config\PhpCsFixer\ProjectRuleSet;
+use Ergebnis\PhpCsFixer;
+
+$overrideRules = [
+    'phpdoc_align' => [
+        'align' => 'left',
+    ],
+    'phpdoc_separation' => false,
+    'phpdoc_line_span' => [
+        'const' => 'single',
+        'method' => 'multi',
+        'property' => 'single',
+    ],
+    'final_class' => false,
+    'yoda_style' => [
+        'always_move_variable' => false,
+        'equal' => false,
+        'identical' => false,
+        'less_and_greater' => false,
+    ],
+];
+
+$config = PhpCsFixer\Config\Factory::fromRuleSet(new ProjectRuleSet(), $overrideRules);
+
+$config->getFinder()
+    ->ignoreDotFiles(false)
+    ->in(__DIR__)
+    ->exclude(
+        [
+            '.build/',
+            'config/',
+            '.runtime/',
+        ]
+    )
+    ->name(
+        [
+            '.php_cs',
+            '.php_cs.dist',
+        ]
+    );
+
+$config->setCacheFile(__DIR__ . '/.build/php-cs-fixer/.php_cs.cache');
+
+return $config;

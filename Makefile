@@ -40,29 +40,44 @@ docker-image-vendor: composer.json ## Install vendor with docker composer image
 	@docker run --rm -v $(PWD):/app composer install --no-interaction --no-progress --no-suggest
 
 .PHONY: coding-standards
-coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize
+coding-standards: .php_cs.dist ## Normalizes composer.json with ergebnis/composer-normalize
+coding-standards: vendor
 	@echo "+ $@"
 	@docker exec -it application composer normalize
 	@docker exec -it application mkdir -p .build/php-cs-fixer
 	@docker exec -it application vendor/bin/php-cs-fixer fix --config=.php_cs.dist --diff --diff-format=udiff --verbose
 
+.PHONY: dependency-analysis
+dependency-analysis: composer-require-checker.json ## Runs a dependency analysis with maglnet/composer-require-checker
+dependency-analysis: vendor
+	@docker run --interactive --rm --tty --volume ${PWD}:/app webfactory/composer-require-checker:2.1.0 check --config-file=composer-require-checker.json
+
 .PHONY: code-tests
-code-tests: phpunit.xml
-code-tests:
+code-tests: phpunit.xml ## Runs unit tests with phpunit/phpunit
+code-tests: vendor
 	@docker exec -it application mkdir -p .build/phpunit
 	@docker exec -it application vendor/bin/phpunit --configuration=phpunit.xml
 
+.PHONY: code-coverage
+code-coverage: phpunit.xml ## Collects coverage from running unit tests with phpunit/phpunit
+code-coverage: vendor
+	@docker exec -it application mkdir -p .build/phpunit
+	@docker exec -it application vendor/bin/phpunit --configuration=phpunit.xml --coverage-text
+
 .PHONY: mutation-tests
-mutation-tests:  ## Runs mutation tests with infection/infection
+mutation-tests: infection.json.dist  ## Runs mutation tests with infection/infection
+mutation-tests: vendor
 	@docker exec -it application mkdir -p .build/infection
 	@docker exec -it application vendor/bin/infection --configuration=infection.json.dist
 
 .PHONY: static-code-analysis
-static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
+static-code-analysis: phpstan.neon phpstan-baseline.neon ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
+static-code-analysis: vendor
 	@docker exec -it application mkdir -p .build/phpstan
 	@docker exec -it application vendor/bin/phpstan analyse --configuration=phpstan.neon
 
 .PHONY: static-code-analysis-baseline
-static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan
+static-code-analysis-baseline: phpstan.neon phpstan-baseline.neon ## Generates a baseline for static code analysis with phpstan/phpstan
+static-code-analysis-baseline: vendor
 	@docker exec -it application mkdir -p .build/phpstan
 	@docker exec -it application vendor/bin/phpstan analyze --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon
