@@ -3,7 +3,7 @@ help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: it
-it: coding-standards code-tests ## Runs the coding-standards, code-tests
+it: coding-standards static-code-analysis code-tests ## Runs the coding-standards, code-tests
 
 .PHONY: application-start
 application-start: ## Start docker containers
@@ -56,3 +56,13 @@ code-tests:
 mutation-tests:  ## Runs mutation tests with infection/infection
 	@docker exec -it application mkdir -p .build/infection
 	@docker exec -it application vendor/bin/infection --configuration=infection.json.dist
+
+.PHONY: static-code-analysis
+static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
+	@docker exec -it application mkdir -p .build/phpstan
+	@docker exec -it application vendor/bin/phpstan analyse --configuration=phpstan.neon
+
+.PHONY: static-code-analysis-baseline
+static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan
+	@docker exec -it application mkdir -p .build/phpstan
+	@docker exec -it application vendor/bin/phpstan analyze --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon

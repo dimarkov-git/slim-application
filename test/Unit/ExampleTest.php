@@ -14,6 +14,8 @@ final class ExampleTest extends TestCase
 {
     public function testExample(): void
     {
-        self::assertTrue(true);
+        $a = 2;
+        $b = $a * 5;
+        self::assertEquals(10, $b);
     }
 }

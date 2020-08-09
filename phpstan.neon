@@ -1,0 +1,28 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+    # common
+    tmpDir: .build/phpstan/
+    level: max
+    paths:
+        - config/
+        - public/
+        - src/
+        - test/
+
+    # reporting unused ignores
+    reportUnmatchedIgnoredErrors: true
+
+    # miscellaneous
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: true
+    tipsOfTheDay: false
+
+    # typehints
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    # strict
+    polluteCatchScopeWithTryAssignments: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: false
