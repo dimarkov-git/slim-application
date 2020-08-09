@@ -15,14 +15,19 @@ use MyCLabs\Enum\Enum;
  * @method static self DEV()
  * @method static self TEST()
  */
-class EnvironmentEnum extends Enum
+final class EnvironmentEnum extends Enum
 {
     private const PROD = 'prod';
     private const DEV = 'dev';
     private const TEST = 'test';
 
+    public function __construct(string $value)
+    {
+        parent::__construct($value);
+    }
+
     public function getValue(): string
     {
-        return (string) parent::getValue();
+        return parent::getValue();
     }
 }
