@@ -46,6 +46,11 @@ coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-norm
 	@docker exec -it application mkdir -p .build/php-cs-fixer
 	@docker exec -it application vendor/bin/php-cs-fixer fix --config=.php_cs.dist --diff --diff-format=udiff --verbose
 
+.PHONY: dependency-analysis
+dependency-analysis: composer-require-checker.json ## Runs a dependency analysis with maglnet/composer-require-checker
+dependency-analysis: vendor
+	@docker run --interactive --rm --tty --volume ${PWD}:/app webfactory/composer-require-checker:2.1.0 check --config-file=composer-require-checker.json
+
 .PHONY: code-tests
 code-tests: phpunit.xml
 code-tests:
