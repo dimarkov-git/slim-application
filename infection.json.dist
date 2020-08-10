@@ -1,14 +1,16 @@
 {
-  "ignoreMsiWithNoMutations": true,
-  "logs": {
-    "text": ".build/infection/infection-log.txt"
-  },
-  "minCoveredMsi": 100,
-  "minMsi": 10,
   "source": {
     "directories": [
       "src"
     ]
   },
-  "timeout": 10
+  "timeout": 30,
+  "logs": {
+    "text": ".build/infection/infection-log.txt",
+    "perMutator": ".build/infection/per-mutator.md"
+  },
+  "tmpDir": ".build/infection/temp/",
+  "ignoreMsiWithNoMutations": true,
+  "minCoveredMsi": 100,
+  "minMsi": 10
 }
