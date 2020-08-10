@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- * @covers \DImarkov\Application\Config\PhpCsFixer\ProjectRuleSet
+ * @coversDefaultClass \DImarkov\Application\Config\PhpCsFixer\ProjectRuleSet
  */
 final class ProjectRuleSetTest extends TestCase
 {

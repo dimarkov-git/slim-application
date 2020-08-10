@@ -20,6 +20,7 @@ application-clean: application-stop ## Clean docker runtime folders
 application-clean:
 	@echo "+ $@"
 	@rm -rf ./.runtime/logs/
+	@rm -rf ./.build/
 
 .PHONY: vendor
 vendor: composer.json ## Install vendor with composer inside application's docker container
