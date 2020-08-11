@@ -13,6 +13,7 @@ function initializeEnvironments(): Dotenv
     $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
     $dotenv->required(EnvironmentVariableEnum::APP_ENV()->getValue())->allowedValues(EnvironmentEnum::toArray());
+    $dotenv->required(EnvironmentVariableEnum::APP_DEBUG()->getValue())->isBoolean();
 
     return $dotenv;
 }

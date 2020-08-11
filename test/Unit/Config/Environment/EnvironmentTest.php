@@ -18,7 +18,6 @@ final class EnvironmentTest extends TestCase
     public function testGetEnvironment(): void
     {
         $_ENV['APP_ENV'] = 'test';
-
         self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getApplicationEnvironment()));
     }
 
@@ -27,7 +26,21 @@ final class EnvironmentTest extends TestCase
         $this->expectException(UnexpectedValueException::class);
 
         $_ENV['APP_ENV'] = 500;
-
         self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getApplicationEnvironment()));
+    }
+
+    public function testIsApplicationDebug(): void
+    {
+        $_ENV['APP_DEBUG'] = 1;
+        self::assertTrue((new Environment())->isApplicationDebug());
+
+        $_ENV['APP_DEBUG'] = 'true';
+        self::assertTrue((new Environment())->isApplicationDebug());
+
+        $_ENV['APP_DEBUG'] = 0;
+        self::assertFalse((new Environment())->isApplicationDebug());
+
+        $_ENV['APP_DEBUG'] = 'false';
+        self::assertFalse((new Environment())->isApplicationDebug());
     }
 }
