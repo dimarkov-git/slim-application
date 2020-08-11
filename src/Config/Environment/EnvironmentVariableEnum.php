@@ -14,6 +14,8 @@ use MyCLabs\Enum\Enum;
  * @method static self DOCKER_PATH()
  * @method static self APPLICATION_PATH()
  * @method static self APP_ENV()
+ *
+ * @psalm-immutable
  */
 final class EnvironmentVariableEnum extends Enum
 {
@@ -24,8 +26,8 @@ final class EnvironmentVariableEnum extends Enum
     // application
     private const APP_ENV = 'APP_ENV';
 
-    public function __construct(string $value)
+    public function getValue(): string
     {
-        parent::__construct($value);
+        return (string) parent::getValue();
     }
 }

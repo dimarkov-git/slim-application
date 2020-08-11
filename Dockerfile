@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     libzip-dev zip unzip \
     vim git curl wget rsync
 
+RUN docker-php-ext-install pcntl
+
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 

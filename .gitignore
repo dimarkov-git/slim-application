@@ -16,5 +16,6 @@
 # cache
 /.build/
 
-# develop scripts
+# develop
 /.develop/
+/lsp/
