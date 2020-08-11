@@ -19,7 +19,7 @@ final class EnvironmentTest extends TestCase
     {
         $_ENV['APP_ENV'] = 'test';
 
-        self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getEnvironment()));
+        self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getApplicationEnvironment()));
     }
 
     public function testGetEnvironmentFail(): void
@@ -28,6 +28,6 @@ final class EnvironmentTest extends TestCase
 
         $_ENV['APP_ENV'] = 500;
 
-        self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getEnvironment()));
+        self::assertTrue(EnvironmentEnum::TEST()->equals((new Environment())->getApplicationEnvironment()));
     }
 }

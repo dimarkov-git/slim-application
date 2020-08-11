@@ -26,12 +26,11 @@ final class EnvironmentEnum extends Enum
 
     /**
      * {@inheritdoc}
-     *
-     * @return string
      */
     public function getValue(): string
     {
-        return (string) parent::getValue();
+        /** @psalm-var string */
+        return parent::getValue();
     }
 
     /**

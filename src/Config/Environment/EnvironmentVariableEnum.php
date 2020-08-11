@@ -26,8 +26,12 @@ final class EnvironmentVariableEnum extends Enum
     // application
     private const APP_ENV = 'APP_ENV';
 
+    /**
+     * {@inheritdoc}
+     */
     public function getValue(): string
     {
-        return (string) parent::getValue();
+        /** @psalm-var string */
+        return parent::getValue();
     }
 }
