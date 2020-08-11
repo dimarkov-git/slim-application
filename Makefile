@@ -75,10 +75,14 @@ mutation-tests: vendor
 static-code-analysis: phpstan.neon phpstan-baseline.neon ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
 static-code-analysis: vendor
 	@docker exec -it application mkdir -p .build/phpstan
-	@docker exec -it application vendor/bin/phpstan analyse --configuration=phpstan.neon
+	@docker exec -it application vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=1G
+	@docker exec -it application mkdir -p .build/psalm
+	@docker exec -it application vendor/bin/psalm --config=psalm.xml --diff --diff-methods --show-info=false --stats --threads=4
 
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: phpstan.neon phpstan-baseline.neon ## Generates a baseline for static code analysis with phpstan/phpstan
 static-code-analysis-baseline: vendor
 	@docker exec -it application mkdir -p .build/phpstan
-	@docker exec -it application vendor/bin/phpstan analyze --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon
+	@docker exec -it application vendor/bin/phpstan analyze --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon --memory-limit=1G
+	@docker exec -it application mkdir -p .build/psalm
+	@docker exec -it application vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml

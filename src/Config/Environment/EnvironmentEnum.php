@@ -14,6 +14,9 @@ use MyCLabs\Enum\Enum;
  * @method static self PROD()
  * @method static self DEV()
  * @method static self TEST()
+ *
+ * @psalm-immutable
+ * @extends Enum<string>
  */
 final class EnvironmentEnum extends Enum
 {
@@ -21,13 +24,24 @@ final class EnvironmentEnum extends Enum
     private const DEV = 'dev';
     private const TEST = 'test';
 
-    public function __construct(string $value)
-    {
-        parent::__construct($value);
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function getValue(): string
     {
+        /** @psalm-var string */
         return parent::getValue();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @psalm-pure
+     * @psalm-return array<string, string>
+     */
+    public static function toArray(): array
+    {
+        /** @psalm-var array<string, string> */
+        return parent::toArray();
     }
 }
