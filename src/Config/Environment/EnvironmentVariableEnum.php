@@ -14,6 +14,7 @@ use MyCLabs\Enum\Enum;
  * @method static self DOCKER_PATH()
  * @method static self APPLICATION_PATH()
  * @method static self APP_ENV()
+ * @method static self APP_DEBUG()
  *
  * @psalm-immutable
  */
@@ -25,6 +26,7 @@ final class EnvironmentVariableEnum extends Enum
 
     // application
     private const APP_ENV = 'APP_ENV';
+    private const APP_DEBUG = 'APP_DEBUG';
 
     /**
      * {@inheritdoc}

@@ -15,6 +15,11 @@ final class Environment
         );
     }
 
+    public function isApplicationDebug(): bool
+    {
+        return $this->getEnvironmentStorage()[EnvironmentVariableEnum::APP_DEBUG()->getValue()]->getAsBool();
+    }
+
     private function getEnvironmentStorage(): Mess
     {
         return new Mess($_ENV);
