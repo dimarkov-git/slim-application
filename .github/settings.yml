@@ -1,7 +1,7 @@
 # https://github.com/probot/settings
 
 branches:
-  - name: "main"
+  - name: "master"
 
     # https://developer.github.com/v3/repos/branches/#remove-branch-protection
     # https://developer.github.com/v3/repos/branches/#update-branch-protection
@@ -69,10 +69,10 @@ labels:
 
 repository:
   allow_merge_commit: true
-  allow_rebase_merge: false
-  allow_squash_merge: false
+  allow_rebase_merge: true
+  allow_squash_merge: true
   archived: false
-  default_branch: "main"
+  default_branch: "master"
   delete_branch_on_merge: true
   description: "Provides a GitHub repository template for a PHP library based on slim framework."
   has_downloads: true
