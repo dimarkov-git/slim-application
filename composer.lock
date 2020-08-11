@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c193006802e53aa06e6c361d4425c78",
+    "content-hash": "769d18826a57a0844e731a18e32bbba9",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -487,6 +487,60 @@
                 }
             ],
             "time": "2020-07-14T19:26:25+00:00"
+        },
+        {
+            "name": "zakirullin/mess",
+            "version": "0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zakirullin/mess.git",
+                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zakirullin/mess/zipball/4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
+                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "infection/infection": "^0.15",
+                "phpunit/phpunit": "^8.0",
+                "vimeo/psalm": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zakirullin\\Mess\\": "src/",
+                    "Zakirullin\\TypedAccessor\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Zakirullin",
+                    "email": "artemzr@gmail.com"
+                }
+            ],
+            "description": "Convenient array-related routine & better type casting",
+            "homepage": "https://github.com/zakirullin/mess",
+            "keywords": [
+                "array",
+                "cast",
+                "json",
+                "language",
+                "php",
+                "type"
+            ],
+            "time": "2020-08-08T07:11:26+00:00"
         }
     ],
     "packages-dev": [
@@ -6417,60 +6471,6 @@
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
             "time": "2015-12-17T08:42:14+00:00"
-        },
-        {
-            "name": "zakirullin/mess",
-            "version": "0.7.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zakirullin/mess.git",
-                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zakirullin/mess/zipball/4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
-                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "infection/infection": "^0.15",
-                "phpunit/phpunit": "^8.0",
-                "vimeo/psalm": "^3.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Zakirullin\\Mess\\": "src/",
-                    "Zakirullin\\TypedAccessor\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem Zakirullin",
-                    "email": "artemzr@gmail.com"
-                }
-            ],
-            "description": "Convenient array-related routine & better type casting",
-            "homepage": "https://github.com/zakirullin/mess",
-            "keywords": [
-                "array",
-                "cast",
-                "json",
-                "language",
-                "php",
-                "type"
-            ],
-            "time": "2020-08-08T07:11:26+00:00"
         }
     ],
     "aliases": [],

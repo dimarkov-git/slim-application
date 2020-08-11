@@ -13,7 +13,8 @@
   "require": {
     "php": "^7.4.9",
     "myclabs/php-enum": "^1.7",
-    "vlucas/phpdotenv": "^5.1"
+    "vlucas/phpdotenv": "^5.1",
+    "zakirullin/mess": "^0.7.2"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.6",
@@ -30,8 +31,7 @@
     "psalm/plugin-phpunit": "^0.10.1",
     "roave/security-advisories": "dev-master",
     "timeweb/phpstan-enum": "^2.2",
-    "vimeo/psalm": "^3.12.2",
-    "zakirullin/mess": "^0.7.2"
+    "vimeo/psalm": "^3.12.2"
   },
   "config": {
     "apcu-autoloader": true,
