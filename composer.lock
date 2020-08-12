@@ -6189,16 +6189,16 @@
         },
         {
             "name": "timeweb/phpstan-enum",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timeweb/phpstan-enum.git",
-                "reference": "e9e5e9de8645d70ef8579d1f64859646bb083863"
+                "reference": "6067608e9a32713621867a3ad27739e8f690296c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timeweb/phpstan-enum/zipball/e9e5e9de8645d70ef8579d1f64859646bb083863",
-                "reference": "e9e5e9de8645d70ef8579d1f64859646bb083863",
+                "url": "https://api.github.com/repos/timeweb/phpstan-enum/zipball/6067608e9a32713621867a3ad27739e8f690296c",
+                "reference": "6067608e9a32713621867a3ad27739e8f690296c",
                 "shasum": ""
             },
             "require": {
@@ -6231,7 +6231,7 @@
                 "PHPStan",
                 "enum"
             ],
-            "time": "2019-12-06T19:13:11+00:00"
+            "time": "2020-08-11T17:33:03+00:00"
         },
         {
             "name": "vimeo/psalm",
