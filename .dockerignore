@@ -1,3 +1,5 @@
+# not working, because docker and source code contain in same folder
+
 .build/
 .git/
 .github/
