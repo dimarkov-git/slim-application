@@ -14,8 +14,6 @@
     "static",
     "string",
     "true",
-    "void",
-    "Ergebnis\\PhpCsFixer\\Config\\RuleSet",
-    "PhpCsFixer\\Fixer\\Import\\OrderedImportsFixer"
+    "void"
   ]
 }

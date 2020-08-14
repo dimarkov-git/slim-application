@@ -11,6 +11,6 @@
   },
   "tmpDir": ".build/infection/temp/",
   "ignoreMsiWithNoMutations": true,
-  "minCoveredMsi": 100,
+  "minCoveredMsi": 50,
   "minMsi": 10
 }
