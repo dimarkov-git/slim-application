@@ -55,7 +55,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "DImarkov\\Application\\Test\\": "test/"
+      "DImarkov\\Application\\Test\\": "test/",
+      "DImarkov\\Application\\Develop\\": "srcDevelop/"
     }
   },
   "support": {

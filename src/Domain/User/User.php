@@ -1,48 +1,41 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace DImarkov\Application\Domain\User;
 
 use JsonSerializable;
 
 class User implements JsonSerializable
 {
-    /**
-     * @var int|null
-     */
+    /** @var null|int */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $username;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $firstName;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $lastName;
 
     /**
-     * @param int|null  $id
-     * @param string    $username
-     * @param string    $firstName
-     * @param string    $lastName
+     * @param null|int $id
+     * @param string $username
+     * @param string $firstName
+     * @param string $lastName
      */
     public function __construct(?int $id, string $username, string $firstName, string $lastName)
     {
         $this->id = $id;
-        $this->username = strtolower($username);
-        $this->firstName = ucfirst($firstName);
-        $this->lastName = ucfirst($lastName);
+        $this->username = \mb_strtolower($username);
+        $this->firstName = \ucfirst($firstName);
+        $this->lastName = \ucfirst($lastName);
     }
 
     /**
-     * @return int|null
+     * @return null|int
      */
     public function getId(): ?int
     {
@@ -74,9 +67,9 @@ class User implements JsonSerializable
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

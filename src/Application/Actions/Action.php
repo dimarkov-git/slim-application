@@ -1,36 +1,35 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Actions;
+namespace DImarkov\Application\Application\Actions;
 
-use App\Domain\DomainException\DomainRecordNotFoundException;
+use DImarkov\Application\Domain\DomainException\DomainRecordNotFoundException;
+use JsonException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
+use const JSON_PRETTY_PRINT;
 
 abstract class Action
 {
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @var Request
+     * @psalm-suppress PropertyNotSetInConstructor
      */
-    protected $request;
+    protected Request $request;
 
     /**
      * @var Response
+     * @psalm-suppress PropertyNotSetInConstructor
      */
-    protected $response;
+    protected Response $response;
 
-    /**
-     * @var array
-     */
-    protected $args;
+    protected array $args = [];
 
     /**
      * @param LoggerInterface $logger
@@ -41,14 +40,14 @@ abstract class Action
     }
 
     /**
-     * @param Request  $request
+     * @param Request $request
      * @param Response $response
-     * @param array    $args
-     * @return Response
+     * @param array $args
      * @throws HttpNotFoundException
      * @throws HttpBadRequestException
+     * @return Response
      */
-    public function __invoke(Request $request, Response $response, $args): Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->request = $request;
         $this->response = $response;
@@ -57,36 +56,37 @@ abstract class Action
         try {
             return $this->action();
         } catch (DomainRecordNotFoundException $e) {
-            throw new HttpNotFoundException($this->request, $e->getMessage());
+            throw new HttpNotFoundException($request, $e->getMessage());
         }
     }
 
     /**
-     * @return Response
      * @throws DomainRecordNotFoundException
      * @throws HttpBadRequestException
+     * @return Response
      */
     abstract protected function action(): Response;
 
     /**
-     * @return array|object
      * @throws HttpBadRequestException
+     * @return array
      */
-    protected function getFormData()
+    protected function getFormData(): array
     {
-        $input = json_decode(file_get_contents('php://input'));
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new HttpBadRequestException($this->request, 'Malformed JSON input.');
+        try {
+            /** @var array $input */
+            $input = \json_decode((string) \file_get_contents('php://input'), true, 512, \JSON_THROW_ON_ERROR);
+        } catch (JsonException $exception) {
+            throw new HttpBadRequestException($this->request, 'Malformed JSON input.', $exception);
         }
 
         return $input;
     }
 
     /**
-     * @param  string $name
-     * @return mixed
+     * @param string $name
      * @throws HttpBadRequestException
+     * @return mixed
      */
     protected function resolveArg(string $name)
     {
@@ -98,7 +98,9 @@ abstract class Action
     }
 
     /**
-     * @param  array|object|null $data
+     * @param null|array|object $data
+     * @param int $statusCode
+     * @throws JsonException
      * @return Response
      */
     protected function respondWithData($data = null, int $statusCode = 200): Response
@@ -110,15 +112,16 @@ abstract class Action
 
     /**
      * @param ActionPayload $payload
+     * @throws JsonException
      * @return Response
      */
     protected function respond(ActionPayload $payload): Response
     {
-        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        $json = \json_encode($payload, \JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
         $this->response->getBody()->write($json);
 
         return $this->response
-                    ->withHeader('Content-Type', 'application/json')
-                    ->withStatus($payload->getStatusCode());
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus($payload->getStatusCode());
     }
 }

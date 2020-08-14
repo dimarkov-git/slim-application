@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace DImarkov\Application\Test\Feature\Application\Actions\User;
 
-use App\Application\Actions\ActionPayload;
-use App\Domain\User\User;
-use App\Domain\User\UserRepository;
 use DI\Container;
+use DImarkov\Application\Application\Actions\ActionPayload;
+use DImarkov\Application\Domain\User\User;
+use DImarkov\Application\Domain\User\UserRepository;
 use DImarkov\Application\Test\Feature\AbstractFeatureTestCase;
 
-class ListUserActionTest extends AbstractFeatureTestCase
+/**
+ * @internal
+ * @coversDefaultClass \DImarkov\Application\Application\Actions\User\ListUsersAction
+ */
+final class ListUserActionTest extends AbstractFeatureTestCase
 {
-    public function testAction()
+    /**
+     * @throws \Exception
+     */
+    public function testAction(): void
     {
         $app = $this->getAppInstance();
 
@@ -34,8 +41,8 @@ class ListUserActionTest extends AbstractFeatureTestCase
 
         $payload = (string) $response->getBody();
         $expectedPayload = new ActionPayload(200, [$user]);
-        $serializedPayload = json_encode($expectedPayload, JSON_PRETTY_PRINT);
+        $serializedPayload = \json_encode($expectedPayload, \JSON_PRETTY_PRINT);
 
-        $this->assertEquals($serializedPayload, $payload);
+        self::assertEquals($serializedPayload, $payload);
     }
 }

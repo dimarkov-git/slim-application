@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace DImarkov\Application\Test\Unit\Config\PhpCsFixer;
 
-use DImarkov\Application\Config\PhpCsFixer\ProjectRuleSet;
+use DImarkov\Application\Develop\Config\PhpCsFixer\ProjectRuleSet;
 use PhpCsFixer\Fixer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- * @coversDefaultClass \DImarkov\Application\Config\PhpCsFixer\ProjectRuleSet
+ * @coversDefaultClass \DImarkov\Application\Develop\Config\PhpCsFixer\ProjectRuleSet
  */
 final class ProjectRuleSetTest extends TestCase
 {

@@ -1,31 +1,24 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Actions;
+namespace DImarkov\Application\Application\Actions;
 
 use JsonSerializable;
 
 class ActionPayload implements JsonSerializable
 {
-    /**
-     * @var int
-     */
-    private $statusCode;
+    private int $statusCode;
 
-    /**
-     * @var array|object|null
-     */
+    /** @var null|array|object */
     private $data;
 
-    /**
-     * @var ActionError|null
-     */
-    private $error;
+    private ?ActionError $error;
 
     /**
-     * @param int                   $statusCode
-     * @param array|object|null     $data
-     * @param ActionError|null      $error
+     * @param int $statusCode
+     * @param null|array|object $data
+     * @param null|ActionError $error
      */
     public function __construct(
         int $statusCode = 200,
@@ -37,34 +30,28 @@ class ActionPayload implements JsonSerializable
         $this->error = $error;
     }
 
-    /**
-     * @return int
-     */
     public function getStatusCode(): int
     {
         return $this->statusCode;
     }
 
     /**
-     * @return array|null|object
+     * @return null|array|object
      */
     public function getData()
     {
         return $this->data;
     }
 
-    /**
-     * @return ActionError|null
-     */
     public function getError(): ?ActionError
     {
         return $this->error;
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $payload = [
             'statusCode' => $this->statusCode,

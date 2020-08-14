@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace DImarkov\Application\Domain\User;
 
-use App\Domain\DomainException\DomainRecordNotFoundException;
+use DImarkov\Application\Domain\DomainException\DomainRecordNotFoundException;
 
 class UserNotFoundException extends DomainRecordNotFoundException
 {
+    /** @var string */
     public $message = 'The user you requested does not exist.';
 }

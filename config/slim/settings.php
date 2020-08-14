@@ -5,7 +5,7 @@ declare(strict_types=1);
 use DI\ContainerBuilder;
 use Monolog\Logger;
 
-return function (ContainerBuilder $containerBuilder) {
+return function (ContainerBuilder $containerBuilder): void {
     // Global Settings Object
     $containerBuilder->addDefinitions(
         [

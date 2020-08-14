@@ -19,11 +19,14 @@ use Slim\Psr7\Headers;
 use Slim\Psr7\Request as SlimRequest;
 use Slim\Psr7\Uri;
 
+/**
+ * @internal
+ */
 abstract class AbstractFeatureTestCase extends AbstractTestCase
 {
     /**
-     * @return App
      * @throws Exception
+     * @return App
      */
     protected function getAppInstance(): App
     {
@@ -66,6 +69,7 @@ abstract class AbstractFeatureTestCase extends AbstractTestCase
      * @param string $method
      * @param string $path
      * @param array $headers
+     * @psalm-param array<string, string|list<string>> $headers
      * @param array $cookies
      * @param array $serverParams
      * @return Request
@@ -78,10 +82,15 @@ abstract class AbstractFeatureTestCase extends AbstractTestCase
         array $serverParams = []
     ): Request {
         $uri = new Uri('', '', 80, $path);
-        $handle = fopen('php://temp', 'wb+');
+        $handle = \fopen('php://temp', 'wb+');
+
+        if ($handle === false) {
+            throw new \RuntimeException('Handle is false');
+        }
         $stream = (new StreamFactory())->createStreamFromResource($handle);
 
         $h = new Headers();
+
         foreach ($headers as $name => $value) {
             $h->addHeader($name, $value);
         }

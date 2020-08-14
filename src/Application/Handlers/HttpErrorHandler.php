@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Handlers;
+namespace DImarkov\Application\Application\Handlers;
 
-use App\Application\Actions\ActionError;
-use App\Application\Actions\ActionPayload;
-use Exception;
+use DImarkov\Application\Application\Actions\ActionError;
+use DImarkov\Application\Application\Actions\ActionPayload;
+use JsonException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpException;
@@ -15,12 +16,13 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpNotImplementedException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Handlers\ErrorHandler as SlimErrorHandler;
-use Throwable;
+use const JSON_PRETTY_PRINT;
 
 class HttpErrorHandler extends SlimErrorHandler
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
+     * @throws JsonException
      */
     protected function respond(): Response
     {
@@ -32,7 +34,7 @@ class HttpErrorHandler extends SlimErrorHandler
         );
 
         if ($exception instanceof HttpException) {
-            $statusCode = $exception->getCode();
+            $statusCode = (int) $exception->getCode();
             $error->setDescription($exception->getMessage());
 
             if ($exception instanceof HttpNotFoundException) {
@@ -52,14 +54,13 @@ class HttpErrorHandler extends SlimErrorHandler
 
         if (
             !($exception instanceof HttpException)
-            && $exception instanceof Throwable
             && $this->displayErrorDetails
         ) {
             $error->setDescription($exception->getMessage());
         }
 
         $payload = new ActionPayload($statusCode, null, $error);
-        $encodedPayload = json_encode($payload, JSON_PRETTY_PRINT);
+        $encodedPayload = \json_encode($payload, \JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
         $response = $this->responseFactory->createResponse($statusCode);
         $response->getBody()->write($encodedPayload);

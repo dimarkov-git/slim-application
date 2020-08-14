@@ -7,10 +7,10 @@
 
 declare(strict_types=1);
 
-use App\Application\Handlers\HttpErrorHandler;
-use App\Application\Handlers\ShutdownHandler;
-use App\Application\ResponseEmitter\ResponseEmitter;
 use DI\ContainerBuilder;
+use DImarkov\Application\Application\Handlers\HttpErrorHandler;
+use DImarkov\Application\Application\Handlers\ShutdownHandler;
+use DImarkov\Application\Application\ResponseEmitter\ResponseEmitter;
 use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
 
@@ -51,8 +51,11 @@ $middleware($app);
 $routes = require __DIR__ . '/../config/slim/routes.php';
 $routes($app);
 
+/** @var array $settings */
+$settings = $container->get('settings');
+
 /** @var bool $displayErrorDetails */
-$displayErrorDetails = $container->get('settings')['displayErrorDetails'];
+$displayErrorDetails = $settings['displayErrorDetails'];
 
 // Create Request object from globals
 $serverRequestCreator = ServerRequestCreatorFactory::create();
@@ -64,7 +67,7 @@ $errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
 
 // Create Shutdown Handler
 $shutdownHandler = new ShutdownHandler($request, $errorHandler, $displayErrorDetails);
-register_shutdown_function($shutdownHandler);
+\register_shutdown_function($shutdownHandler);
 
 // Add Routing Middleware
 $app->addRoutingMiddleware();

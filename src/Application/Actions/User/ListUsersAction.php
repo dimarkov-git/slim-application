@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Actions\User;
+namespace DImarkov\Application\Application\Actions\User;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -14,7 +15,7 @@ class ListUsersAction extends UserAction
     {
         $users = $this->userRepository->findAll();
 
-        $this->logger->info("Users list was viewed.");
+        $this->logger->info('Users list was viewed.');
 
         return $this->respondWithData($users);
     }

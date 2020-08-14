@@ -1,18 +1,22 @@
 <?php
 
+/**
+ * @noinspection PhpUnusedParameterInspection
+ */
+
 declare(strict_types=1);
 
-use App\Application\Actions\User\ListUsersAction;
-use App\Application\Actions\User\ViewUserAction;
+use DImarkov\Application\Application\Actions\User\ListUsersAction;
+use DImarkov\Application\Application\Actions\User\ViewUserAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
-return function (App $app) {
+return function (App $app): void {
     $app->options(
         '/{routes:.*}',
-        function (Request $request, Response $response) {
+        function (Request $request, Response $response): Response {
             // CORS Pre-Flight OPTIONS Request Handler
             return $response;
         }
@@ -20,7 +24,7 @@ return function (App $app) {
 
     $app->get(
         '/',
-        function (Request $request, Response $response) {
+        function (Request $request, Response $response): Response {
             $response->getBody()->write('Hello world!');
             return $response;
         }
@@ -28,7 +32,7 @@ return function (App $app) {
 
     $app->group(
         '/users',
-        function (Group $group) {
+        function (Group $group): void {
             $group->get('', ListUsersAction::class);
             $group->get('/{id}', ViewUserAction::class);
         }

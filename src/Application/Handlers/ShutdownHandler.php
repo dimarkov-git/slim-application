@@ -1,36 +1,24 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Handlers;
+namespace DImarkov\Application\Application\Handlers;
 
-use App\Application\ResponseEmitter\ResponseEmitter;
+use DImarkov\Application\Application\ResponseEmitter\ResponseEmitter;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpInternalServerErrorException;
+use const E_USER_ERROR;
+use const E_USER_NOTICE;
+use const E_USER_WARNING;
 
 class ShutdownHandler
 {
-    /**
-     * @var Request
-     */
-    private $request;
+    private Request $request;
 
-    /**
-     * @var HttpErrorHandler
-     */
-    private $errorHandler;
+    private HttpErrorHandler $errorHandler;
 
-    /**
-     * @var bool
-     */
-    private $displayErrorDetails;
+    private bool $displayErrorDetails;
 
-    /**
-     * ShutdownHandler constructor.
-     *
-     * @param Request           $request
-     * @param HttpErrorHandler  $errorHandler
-     * @param bool              $displayErrorDetails
-     */
     public function __construct(
         Request $request,
         HttpErrorHandler $errorHandler,
@@ -41,10 +29,11 @@ class ShutdownHandler
         $this->displayErrorDetails = $displayErrorDetails;
     }
 
-    public function __invoke()
+    public function __invoke(): void
     {
-        $error = error_get_last();
-        if ($error) {
+        $error = \error_get_last();
+
+        if (\is_array($error)) {
             $errorFile = $error['file'];
             $errorLine = $error['line'];
             $errorMessage = $error['message'];
@@ -56,25 +45,33 @@ class ShutdownHandler
                     case E_USER_ERROR:
                         $message = "FATAL ERROR: {$errorMessage}. ";
                         $message .= " on line {$errorLine} in file {$errorFile}.";
-                        break;
 
+                        break;
                     case E_USER_WARNING:
                         $message = "WARNING: {$errorMessage}";
-                        break;
 
+                        break;
                     case E_USER_NOTICE:
                         $message = "NOTICE: {$errorMessage}";
+
                         break;
 
                     default:
                         $message = "ERROR: {$errorMessage}";
                         $message .= " on line {$errorLine} in file {$errorFile}.";
+
                         break;
                 }
             }
 
             $exception = new HttpInternalServerErrorException($this->request, $message);
-            $response = $this->errorHandler->__invoke($this->request, $exception, $this->displayErrorDetails, false, false);
+            $response = $this->errorHandler->__invoke(
+                $this->request,
+                $exception,
+                $this->displayErrorDetails,
+                false,
+                false
+            );
 
             $responseEmitter = new ResponseEmitter();
             $responseEmitter->emit($response);

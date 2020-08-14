@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace DImarkov\Application\Domain\User;
 
 interface UserRepository
 {
@@ -12,8 +13,8 @@ interface UserRepository
 
     /**
      * @param int $id
-     * @return User
      * @throws UserNotFoundException
+     * @return User
      */
     public function findUserOfId(int $id): User;
 }

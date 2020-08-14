@@ -4,19 +4,27 @@ declare(strict_types=1);
 
 namespace DImarkov\Application\Test\Feature\Application\Actions\User;
 
-use App\Application\Actions\ActionError;
-use App\Application\Actions\ActionPayload;
-use App\Application\Handlers\HttpErrorHandler;
-use App\Domain\User\User;
-use App\Domain\User\UserNotFoundException;
-use App\Domain\User\UserRepository;
 use DI\Container;
+use DImarkov\Application\Application\Actions\ActionError;
+use DImarkov\Application\Application\Actions\ActionPayload;
+use DImarkov\Application\Application\Handlers\HttpErrorHandler;
+use DImarkov\Application\Domain\User\User;
+use DImarkov\Application\Domain\User\UserNotFoundException;
+use DImarkov\Application\Domain\User\UserRepository;
 use DImarkov\Application\Test\Feature\AbstractFeatureTestCase;
 use Slim\Middleware\ErrorMiddleware;
 
-class ViewUserActionTest extends AbstractFeatureTestCase
+/**
+ * @internal
+ * @coversDefaultClass \DImarkov\Application\Application\Actions\User\ViewUserAction
+ */
+final class ViewUserActionTest extends AbstractFeatureTestCase
 {
-    public function testAction()
+    /**
+     * @throws UserNotFoundException
+     * @throws \JsonException
+     */
+    public function testAction(): void
     {
         $app = $this->getAppInstance();
 
@@ -38,12 +46,16 @@ class ViewUserActionTest extends AbstractFeatureTestCase
 
         $payload = (string) $response->getBody();
         $expectedPayload = new ActionPayload(200, $user);
-        $serializedPayload = json_encode($expectedPayload, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+        $serializedPayload = \json_encode($expectedPayload, \JSON_THROW_ON_ERROR | \JSON_PRETTY_PRINT);
 
-        $this->assertEquals($serializedPayload, $payload);
+        self::assertEquals($serializedPayload, $payload);
     }
 
-    public function testActionThrowsUserNotFoundException()
+    /**
+     * @throws UserNotFoundException
+     * @throws \JsonException
+     */
+    public function testActionThrowsUserNotFoundException(): void
     {
         $app = $this->getAppInstance();
 
@@ -73,8 +85,8 @@ class ViewUserActionTest extends AbstractFeatureTestCase
         $payload = (string) $response->getBody();
         $expectedError = new ActionError(ActionError::RESOURCE_NOT_FOUND, 'The user you requested does not exist.');
         $expectedPayload = new ActionPayload(404, null, $expectedError);
-        $serializedPayload = json_encode($expectedPayload, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+        $serializedPayload = \json_encode($expectedPayload, \JSON_THROW_ON_ERROR | \JSON_PRETTY_PRINT);
 
-        $this->assertEquals($serializedPayload, $payload);
+        self::assertEquals($serializedPayload, $payload);
     }
 }

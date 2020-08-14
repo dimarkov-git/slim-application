@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-use App\Domain\User\UserRepository;
-use App\Infrastructure\Persistence\User\InMemoryUserRepository;
 use DI\ContainerBuilder;
+use DImarkov\Application\Domain\User\UserRepository;
+use DImarkov\Application\Infrastructure\Persistence\User\InMemoryUserRepository;
 
-return function (ContainerBuilder $containerBuilder) {
+use function DI\autowire;
+
+return function (ContainerBuilder $containerBuilder): void {
     // Here we map our UserRepository interface to its in memory implementation
     $containerBuilder->addDefinitions(
         [
-            UserRepository::class => \DI\autowire(InMemoryUserRepository::class),
+            UserRepository::class => autowire(InMemoryUserRepository::class),
         ]
     );
 };

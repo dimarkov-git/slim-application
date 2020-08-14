@@ -9,19 +9,21 @@ use Monolog\Processor\UidProcessor;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
-return function (ContainerBuilder $containerBuilder) {
+return function (ContainerBuilder $containerBuilder): void {
     $containerBuilder->addDefinitions(
         [
-            LoggerInterface::class => function (ContainerInterface $c) {
+            LoggerInterface::class => function (ContainerInterface $c): LoggerInterface {
+                /** @var array $settings */
                 $settings = $c->get('settings');
 
+                /** @var array $loggerSettings */
                 $loggerSettings = $settings['logger'];
-                $logger = new Logger($loggerSettings['name']);
+                $logger = new Logger((string) $loggerSettings['name']);
 
                 $processor = new UidProcessor();
                 $logger->pushProcessor($processor);
 
-                $handler = new StreamHandler($loggerSettings['path'], $loggerSettings['level']);
+                $handler = new StreamHandler((string) $loggerSettings['path'], (int) $loggerSettings['level']);
                 $logger->pushHandler($handler);
 
                 return $logger;

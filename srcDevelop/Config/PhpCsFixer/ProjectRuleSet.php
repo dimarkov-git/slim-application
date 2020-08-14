@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DImarkov\Application\Config\PhpCsFixer;
+namespace DImarkov\Application\Develop\Config\PhpCsFixer;
 
 use Ergebnis\PhpCsFixer\Config\RuleSet;
 use PhpCsFixer\Fixer;

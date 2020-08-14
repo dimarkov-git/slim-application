@@ -1,22 +1,21 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Application\Actions\User;
+namespace DImarkov\Application\Application\Actions\User;
 
-use App\Application\Actions\Action;
-use App\Domain\User\UserRepository;
+use DImarkov\Application\Application\Actions\Action;
+use DImarkov\Application\Domain\User\UserRepository;
 use Psr\Log\LoggerInterface;
 
 abstract class UserAction extends Action
 {
-    /**
-     * @var UserRepository
-     */
+    /** @var UserRepository */
     protected $userRepository;
 
     /**
      * @param LoggerInterface $logger
-     * @param UserRepository  $userRepository
+     * @param UserRepository $userRepository
      */
     public function __construct(LoggerInterface $logger, UserRepository $userRepository)
     {

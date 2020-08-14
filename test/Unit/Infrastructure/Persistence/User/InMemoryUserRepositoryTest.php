@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace DImarkov\Application\Test\Unit\Infrastructure\Persistence\User;
 
-use App\Domain\User\User;
-use App\Domain\User\UserNotFoundException;
-use App\Infrastructure\Persistence\User\InMemoryUserRepository;
+use DImarkov\Application\Domain\User\User;
+use DImarkov\Application\Domain\User\UserNotFoundException;
+use DImarkov\Application\Infrastructure\Persistence\User\InMemoryUserRepository;
 use PHPUnit\Framework\TestCase as AbstractTestCase;
 
-class InMemoryUserRepositoryTest extends AbstractTestCase
+/**
+ * @internal
+ * @coversNothing
+ */
+final class InMemoryUserRepositoryTest extends AbstractTestCase
 {
     public function testFindAll(): void
     {
@@ -17,7 +21,7 @@ class InMemoryUserRepositoryTest extends AbstractTestCase
 
         $userRepository = new InMemoryUserRepository([1 => $user]);
 
-        $this->assertEquals([$user], $userRepository->findAll());
+        self::assertEquals([$user], $userRepository->findAll());
     }
 
     public function testFindAllUsersByDefault(): void
@@ -32,7 +36,7 @@ class InMemoryUserRepositoryTest extends AbstractTestCase
 
         $userRepository = new InMemoryUserRepository();
 
-        $this->assertEquals(array_values($users), $userRepository->findAll());
+        self::assertEquals(\array_values($users), $userRepository->findAll());
     }
 
     public function testFindUserOfId(): void
@@ -41,7 +45,7 @@ class InMemoryUserRepositoryTest extends AbstractTestCase
 
         $userRepository = new InMemoryUserRepository([1 => $user]);
 
-        $this->assertEquals($user, $userRepository->findUserOfId(1));
+        self::assertEquals($user, $userRepository->findUserOfId(1));
     }
 
     public function testFindUserOfIdThrowsNotFoundException(): void

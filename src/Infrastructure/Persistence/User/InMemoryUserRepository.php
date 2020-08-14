@@ -1,25 +1,26 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence\User;
+namespace DImarkov\Application\Infrastructure\Persistence\User;
 
-use App\Domain\User\User;
-use App\Domain\User\UserNotFoundException;
-use App\Domain\User\UserRepository;
+use DImarkov\Application\Domain\User\User;
+use DImarkov\Application\Domain\User\UserNotFoundException;
+use DImarkov\Application\Domain\User\UserRepository;
 
 class InMemoryUserRepository implements UserRepository
 {
     /**
      * @var User[]
+     * @psalm-param list<User>
      */
-    private $users;
+    private array $users;
 
     /**
-     * InMemoryUserRepository constructor.
-     *
-     * @param array|null $users
+     * @param null|array $users
+     * @psalm-param null|array<int, User> $users
      */
-    public function __construct(array $users = null)
+    public function __construct(?array $users = null)
     {
         $this->users = $users ?? [
             1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
@@ -35,7 +36,7 @@ class InMemoryUserRepository implements UserRepository
      */
     public function findAll(): array
     {
-        return array_values($this->users);
+        return \array_values($this->users);
     }
 
     /**
