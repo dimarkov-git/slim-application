@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69cea61ae3e97c95163d6f6f96cd5efa",
+    "content-hash": "259032cea247acc57c95e4d41e35a6df",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -2585,16 +2585,16 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.16.4",
+            "version": "0.16.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infection/infection.git",
-                "reference": "c1ef0b16b3e8d171f10ba8bfe8b6c93d482a68b4"
+                "reference": "f02709e6604c20fb56ef5743f082c009346322cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/c1ef0b16b3e8d171f10ba8bfe8b6c93d482a68b4",
-                "reference": "c1ef0b16b3e8d171f10ba8bfe8b6c93d482a68b4",
+                "url": "https://api.github.com/repos/infection/infection/zipball/f02709e6604c20fb56ef5743f082c009346322cc",
+                "reference": "f02709e6604c20fb56ef5743f082c009346322cc",
                 "shasum": ""
             },
             "require": {
@@ -2622,6 +2622,7 @@
                 "webmozart/path-util": "^2.3"
             },
             "conflict": {
+                "phpunit/php-code-coverage": ">9 <9.1.4",
                 "symfony/console": "=4.1.5"
             },
             "require-dev": {
@@ -2688,7 +2689,7 @@
                 "testing",
                 "unit testing"
             ],
-            "time": "2020-06-25T15:14:51+00:00"
+            "time": "2020-08-16T21:03:43+00:00"
         },
         {
             "name": "jangregor/phpstan-prophecy",
