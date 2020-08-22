@@ -12,5 +12,12 @@
   "tmpDir": ".build/infection/temp/",
   "ignoreMsiWithNoMutations": true,
   "minCoveredMsi": 50,
-  "minMsi": 10
+  "minMsi": 10,
+  "mutators": {
+    "global-ignore": [
+      "json_decode",
+      "json_encode"
+    ],
+    "@default": true
+  }
 }
