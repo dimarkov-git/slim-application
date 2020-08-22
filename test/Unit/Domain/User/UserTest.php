@@ -46,6 +46,15 @@ final class UserTest extends AbstractTestCase
         self::assertEquals($lastName, $user->getLastName());
     }
 
+    public function testPropertyMutations(): void
+    {
+        $user = new User(100, 'Τάχιστη', 'first', 'last');
+
+        self::assertEquals('τάχιστη', $user->getUsername());
+        self::assertEquals('First', $user->getFirstName());
+        self::assertEquals('Last', $user->getLastName());
+    }
+
     /**
      * @dataProvider userProvider
      * @param int $id

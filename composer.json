@@ -31,7 +31,7 @@
     "ergebnis/composer-normalize": "^2.7",
     "ergebnis/php-cs-fixer-config": "^2.2",
     "friendsofphp/php-cs-fixer": "^2.16",
-    "infection/infection": "^0.17.0",
+    "infection/infection": "^0.17.2",
     "jangregor/phpstan-prophecy": "^0.8.0",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^0.12.38",
@@ -42,7 +42,7 @@
     "psalm/plugin-phpunit": "^0.10.1",
     "roave/security-advisories": "dev-master",
     "timeweb/phpstan-enum": "^2.2",
-    "vimeo/psalm": "^3.12.2"
+    "vimeo/psalm": "^3.14"
   },
   "config": {
     "apcu-autoloader": true,
