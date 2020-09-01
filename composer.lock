@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85f32f6b500a1b6e53c1a86f9d46106a",
+    "content-hash": "f9fe118031ad313c88291ba75eca83c0",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -1415,16 +1415,16 @@
         },
         {
             "name": "zakirullin/mess",
-            "version": "0.7.2",
+            "version": "0.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zakirullin/mess.git",
-                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d"
+                "reference": "7d41a52920892ad353c5513ec54f614db7452576"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zakirullin/mess/zipball/4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
-                "reference": "4e8b27949d54ba0985ee381b57c6b5b34e13e52d",
+                "url": "https://api.github.com/repos/zakirullin/mess/zipball/7d41a52920892ad353c5513ec54f614db7452576",
+                "reference": "7d41a52920892ad353c5513ec54f614db7452576",
                 "shasum": ""
             },
             "require": {
@@ -1462,10 +1462,11 @@
                 "cast",
                 "json",
                 "language",
+                "mess",
                 "php",
                 "type"
             ],
-            "time": "2020-08-08T07:11:26+00:00"
+            "time": "2020-08-31T20:10:34+00:00"
         }
     ],
     "packages-dev": [
