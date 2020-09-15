@@ -42,7 +42,7 @@
     "psalm/plugin-phpunit": "^0.12.1",
     "roave/security-advisories": "dev-master",
     "timeweb/phpstan-enum": "^2.2",
-    "vimeo/psalm": "^3.14"
+    "vimeo/psalm": "^3.15"
   },
   "config": {
     "apcu-autoloader": true,
