@@ -24,7 +24,7 @@
     "psr/log": "^1.1",
     "slim/psr7": "^1.2",
     "slim/slim": "^4.5",
-    "vlucas/phpdotenv": "^5.1",
+    "vlucas/phpdotenv": "^5.2",
     "zakirullin/mess": "^0.7.3"
   },
   "require-dev": {
