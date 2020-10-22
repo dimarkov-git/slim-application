@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5772817491e3c1ddba27b1f5f81e7e2",
+    "content-hash": "ff2132bbc25b6a6147ea006ba538ed43",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -2254,16 +2254,16 @@
         },
         {
             "name": "ergebnis/php-cs-fixer-config",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/php-cs-fixer-config.git",
-                "reference": "0bcde3f7cd0c4f01f6135f80ddd9cadcbf341879"
+                "reference": "309a510f93528844a9b231d442c1fd4acc87173d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/0bcde3f7cd0c4f01f6135f80ddd9cadcbf341879",
-                "reference": "0bcde3f7cd0c4f01f6135f80ddd9cadcbf341879",
+                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/309a510f93528844a9b231d442c1fd4acc87173d",
+                "reference": "309a510f93528844a9b231d442c1fd4acc87173d",
                 "shasum": ""
             },
             "require": {
@@ -2279,14 +2279,14 @@
                 "infection/infection": "~0.15.3",
                 "jangregor/phpstan-prophecy": "~0.8.0",
                 "phpstan/extension-installer": "^1.0.5",
-                "phpstan/phpstan": "~0.12.48",
+                "phpstan/phpstan": "~0.12.50",
                 "phpstan/phpstan-deprecation-rules": "~0.12.5",
                 "phpstan/phpstan-phpunit": "~0.12.16",
                 "phpstan/phpstan-strict-rules": "~0.12.5",
                 "phpunit/phpunit": "^8.5.8",
                 "psalm/plugin-phpunit": "~0.12.2",
                 "symfony/filesystem": "^4.4.0",
-                "vimeo/psalm": "^3.16"
+                "vimeo/psalm": "^3.18"
             },
             "type": "library",
             "autoload": {
@@ -2312,7 +2312,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-08T18:03:06+00:00"
+            "time": "2020-10-21T11:06:57+00:00"
         },
         {
             "name": "felixfbecker/advanced-json-rpc",
