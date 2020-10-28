@@ -31,7 +31,7 @@
     "ergebnis/composer-normalize": "^2.9",
     "ergebnis/php-cs-fixer-config": "^2.4",
     "friendsofphp/php-cs-fixer": "^2.16",
-    "infection/infection": "^0.18",
+    "infection/infection": "^0.19",
     "jangregor/phpstan-prophecy": "^0.8.1",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^0.12.52",
