@@ -2256,16 +2256,16 @@
         },
         {
             "name": "ergebnis/php-cs-fixer-config",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/php-cs-fixer-config.git",
-                "reference": "5d4d140f4fa0109bf4b7cf64cb557099a9f049df"
+                "reference": "fef2ad86f34dcb2f268cc00f8fb477fe03d6e921"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/5d4d140f4fa0109bf4b7cf64cb557099a9f049df",
-                "reference": "5d4d140f4fa0109bf4b7cf64cb557099a9f049df",
+                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/fef2ad86f34dcb2f268cc00f8fb477fe03d6e921",
+                "reference": "fef2ad86f34dcb2f268cc00f8fb477fe03d6e921",
                 "shasum": ""
             },
             "require": {
@@ -2320,7 +2320,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-01T19:07:47+00:00"
+            "time": "2020-11-10T07:47:32+00:00"
         },
         {
             "name": "felixfbecker/advanced-json-rpc",
@@ -4333,12 +4333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "065a018d3b5c2c84a53db3347cca4e1b7fa362a6"
+                "reference": "e440567339d5fe93d9525e377c5e686b0b08bcca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/065a018d3b5c2c84a53db3347cca4e1b7fa362a6",
-                "reference": "065a018d3b5c2c84a53db3347cca4e1b7fa362a6",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e440567339d5fe93d9525e377c5e686b0b08bcca",
+                "reference": "e440567339d5fe93d9525e377c5e686b0b08bcca",
                 "shasum": ""
             },
             "conflict": {
@@ -4636,7 +4636,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-01T20:01:47+00:00"
+            "time": "2020-11-07T16:07:08+00:00"
         },
         {
             "name": "sanmai/pipeline",
