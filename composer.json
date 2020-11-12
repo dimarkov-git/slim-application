@@ -39,10 +39,10 @@
     "phpstan/phpstan-phpunit": "^0.12.16",
     "phpstan/phpstan-strict-rules": "^0.12.5",
     "phpunit/phpunit": "^9.4",
-    "psalm/plugin-phpunit": "^0.12.2",
+    "psalm/plugin-phpunit": "^0.13.0",
     "roave/security-advisories": "dev-master",
     "timeweb/phpstan-enum": "^2.2",
-    "vimeo/psalm": "^3.14"
+    "vimeo/psalm": "^4.1"
   },
   "config": {
     "apcu-autoloader": true,

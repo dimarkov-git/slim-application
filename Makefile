@@ -22,6 +22,12 @@ application-clean:
 	@rm -rf ./.runtime/logs/
 	@rm -rf ./.build/
 
+.PHONY: application-rebuild
+application-rebuild: ## Rebuild docker image
+	@echo "+ $@"
+	@docker-compose down
+	@docker-compose build
+
 .PHONY: vendor
 vendor: composer.json ## Install vendor with composer inside application's docker container
 	@echo "+ $@"
@@ -77,7 +83,7 @@ static-code-analysis: vendor
 	@docker exec -it application mkdir -p .build/phpstan
 	@docker exec -it application vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=1G
 	@docker exec -it application mkdir -p .build/psalm
-	@docker exec -it application vendor/bin/psalm --config=psalm.xml --diff --diff-methods --show-info=false --stats --threads=4
+	@docker exec -it application vendor/bin/psalm --config=psalm.xml --show-info=false --stats --threads=4
 
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: phpstan.neon phpstan-baseline.neon ## Generates a baseline for static code analysis with phpstan/phpstan
