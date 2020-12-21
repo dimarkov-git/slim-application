@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfd111350882c52e34e905c74166a9bd",
+    "content-hash": "db1105b473d26bae0fdc681b5ed75838",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -1437,25 +1437,25 @@
         },
         {
             "name": "zakirullin/mess",
-            "version": "0.7.3",
+            "version": "0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zakirullin/mess.git",
-                "reference": "7d41a52920892ad353c5513ec54f614db7452576"
+                "reference": "3cfcd7e9f7932d405491bb82db7060a9c1432fb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zakirullin/mess/zipball/7d41a52920892ad353c5513ec54f614db7452576",
-                "reference": "7d41a52920892ad353c5513ec54f614db7452576",
+                "url": "https://api.github.com/repos/zakirullin/mess/zipball/3cfcd7e9f7932d405491bb82db7060a9c1432fb8",
+                "reference": "3cfcd7e9f7932d405491bb82db7060a9c1432fb8",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
-                "infection/infection": "^0.15",
+                "infection/infection": "^0.15|^0.20",
                 "phpunit/phpunit": "^8.0",
-                "vimeo/psalm": "^3.8"
+                "vimeo/psalm": "4.3.1"
             },
             "type": "library",
             "autoload": {
@@ -1481,6 +1481,7 @@
             "homepage": "https://github.com/zakirullin/mess",
             "keywords": [
                 "array",
+                "assert",
                 "cast",
                 "json",
                 "language",
@@ -1488,7 +1489,7 @@
                 "php",
                 "type"
             ],
-            "time": "2020-08-31T20:10:34+00:00"
+            "time": "2020-12-19T10:24:03+00:00"
         }
     ],
     "packages-dev": [
