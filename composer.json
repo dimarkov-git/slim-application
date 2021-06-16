@@ -28,7 +28,7 @@
     "zakirullin/mess": "^0.8.2"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.13",
+    "ergebnis/composer-normalize": "^2.15",
     "ergebnis/php-cs-fixer-config": "^2.5",
     "friendsofphp/php-cs-fixer": "^2.16",
     "infection/infection": "^0.21",
